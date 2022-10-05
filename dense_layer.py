@@ -4,7 +4,7 @@ import numpy as np
 class DenseLayer(object):
 
 	def __init__(self, num_inputs, layer_size, activation_func)->None:
-		self.W = np.random.standard_normal((num_input, layer_size))
+		self.W = np.random.standard_normal((num_inputs, layer_size))
 		self.b = np.random.standard_normal(layer_size)
 		self.size = layer_size
 		self.activation_func = activation_func

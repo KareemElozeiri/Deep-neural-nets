@@ -6,7 +6,7 @@ def step(x)->int:
 		return 0
 	return 1
 
-def sigmoid(x)->foat:
+def sigmoid(x)->float:
 	return 1/(1+np.exp(-x))
 
 def relu(x)->float:
