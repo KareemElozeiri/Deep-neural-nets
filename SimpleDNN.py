@@ -1,6 +1,7 @@
 import numpy as np 
 from dense_layer import DenseLayer
 from activation_functions import sigmoid
+
 class SimpleNN(object):
 	"""
 		Args:
@@ -20,7 +21,7 @@ class SimpleNN(object):
 		for layer in self.layers:
 			x = layer.forward(x)
 		return x
-	def predict(self, x):
+	def predict(self, x)->int:
 		classes_probabilities = self.forward(x)
 		return np.argmax(estimations)
 
