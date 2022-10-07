@@ -1,6 +1,6 @@
 import numpy as np 
-from dense_layer import DenseLayer
-from activation_functions import sigmoid
+import dense_layer
+import activation_functions
 
 class SimpleNN(object):
 	"""
@@ -15,7 +15,7 @@ class SimpleNN(object):
 		super().__init__()
 		#building the NN layers
 		sizes = [num_inputs, *hidden_layers_sizes, num_outputs]
-		self.layers = [DenseLayer(sizes[i], sizes[i+1], sigmiod) for i in range(len(sizes)-1)]
+		self.layers = [dense_layer.DenseLayer(sizes[i], sizes[i+1], activation_functions.sigmoid) for i in range(len(sizes)-1)]
 	
 	def forward(self,x):
 		for layer in self.layers:
@@ -23,5 +23,12 @@ class SimpleNN(object):
 		return x
 	def predict(self, x)->int:
 		classes_probabilities = self.forward(x)
-		return np.argmax(estimations)
+		return np.argmax(classes_probabilities)
+	
+	def evaluate_accuracy(self, X_val, y_val):
+		num_correct = 0
+		for i in range(len(X_val)):
+			if self.predict(X_val[i]) == y_val[i]:
+				num_correct += 1
+		return num_correct/len(y_val)
 
