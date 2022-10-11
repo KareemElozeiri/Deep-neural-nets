@@ -32,3 +32,5 @@ class SimpleNN(object):
 				num_correct += 1
 		return num_correct/len(y_val)
 
+	def get_weights()->np.array:
+		return np.array([layer.get_weight() for layer in self.layers])
